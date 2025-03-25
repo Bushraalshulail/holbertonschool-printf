@@ -53,8 +53,10 @@ int _printf(const char *format, ...)
 
 	for (i = 0; format[i]; i++)
 	{
-		if (format[i] == '%' && format[i + 1] != '\0')
+		if (format[i] == '%')
 		{
+			if (format[i + 1] == '\0')
+				return (-1);
 			if (format[i + 1] == 'c')
 				counter += print_char(args);
 			else if (format[i + 1] == 's')
@@ -62,7 +64,10 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == '%')
 				counter += write(1, "%", 1);
 			else
-				counter += write(1, &format[i], 1);
+			{
+				counter += write(1, "%", 1);
+				counter += write(1, &format[i + 1], 1);
+			}
 			i++;
 		}
 		else
