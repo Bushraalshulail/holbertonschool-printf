@@ -22,8 +22,8 @@ int print_char(va_list args)
  */
 int print_int(va_list args)
 {
-	int n = va_arg(args, int);
-	int i = 20, counter = 0;
+	long int n = va_arg(args, int);
+	int i = 19, counter = 0;
 	char s[20];
 	char c = '-';
 
@@ -32,6 +32,11 @@ int print_int(va_list args)
 		n *= -1;
 		counter += write(1, &c, 1);
 	}
+	if (n == 0)
+	{
+		c = '0';
+		return (write(1, &c, 1));
+	}
 	while (n > 0)
 	{
 		c =  n % 10 + 48;
@@ -39,7 +44,7 @@ int print_int(va_list args)
 		i--;
 		n /= 10;
 	}
-	counter += write(1, s + i + 1, 20 - i);
+	counter += write(1, s + i + 1, 19 - i);
 	return (counter);
 }
 
