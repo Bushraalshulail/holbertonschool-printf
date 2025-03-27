@@ -1,0 +1,63 @@
+.TH _PRINTF 3 "March 2025" "Version 1.0" "Custom Print Function"
+.SH NAME
+_printf \- Custom implementation of the printf function
+
+.SH SYNOPSIS
+.B #include "main.h"
+.br
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+.B _printf
+is a custom implementation of the standard printf function. It produces output according to the format specified in
+.I format
+and any additional arguments.
+
+.PP
+The format string can include:
+.TP
+.B %c
+Prints a single character.
+.TP
+.B %s
+Prints a string.
+.TP
+.B %d, %i
+Prints an integer.
+.TP
+.B %u
+Prints an unsigned integer.
+.TP
+.B %o
+Prints an unsigned integer in octal.
+.TP
+.B %x, %X
+Prints an unsigned integer in hexadecimal (lowercase/uppercase).
+.TP
+.B %p
+Prints a memory address.
+.TP
+.B %%
+Prints a literal percent sign.
+
+.SH RETURN VALUE
+Returns the number of characters printed (excluding the null byte). Returns -1 on error.
+
+.SH EXAMPLES
+.B #include "main.h"
+.br
+.B #include <stdio.h>
+.PP
+.B int main(void)
+.RS
+.nf
+    _printf("Hello, %s!\n", "world");
+    return (0);
+.fi
+.RE
+
+.SH SEE ALSO
+.BR printf (3)
+
+.SH AUTHORS
+Bushra ALSHULAIL, Hamad DAHASH
